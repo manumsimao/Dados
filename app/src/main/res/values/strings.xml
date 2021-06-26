@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Dados</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="selecione_o_n_mero_de_dados">Selecione o número de dados</string>
+    <string name="entre_com_o_n_mero_de_faces">Entre com o número de faces</string>
+    <string name="salvar">Salvar</string>
 </resources>
