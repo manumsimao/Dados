@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     private var config: Configuracao = Configuracao()
 
     private lateinit var settingsActivityLauncher: ActivityResultLauncher<Intent>
+    private lateinit var configuracoesSharedPreferences: android.content.SharedPreferences
+    var sharedPreferences = SharedPreferencesConstantes()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
         geradorRandomico = Random(System.currentTimeMillis())
+        carregaConfiguracoes()
 
         activityMainBinding.jogarDadoBt.setOnClickListener {
             val numeroDados = config.numeroDados
@@ -101,5 +104,18 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    private fun carregaConfiguracoes() {
+        configuracoesSharedPreferences = getSharedPreferences(sharedPreferences.CONFIGURACOES_ARQUIVO, MODE_PRIVATE)
+
+        val numeroDados : Int = configuracoesSharedPreferences.getInt(sharedPreferences.NUMERO_DADOS_ATRIBUTO, sharedPreferences.VALOR_NAO_ENCONTRADO)
+        val numeroFaces : Int = configuracoesSharedPreferences.getInt(sharedPreferences.NUMERO_FACES_ATRIBUTO, sharedPreferences.VALOR_NAO_ENCONTRADO)
+        if(numeroDados != sharedPreferences.VALOR_NAO_ENCONTRADO){
+            config.numeroDados = numeroDados
+        }
+        if(numeroFaces != sharedPreferences.VALOR_NAO_ENCONTRADO) {
+            config.numberoFaces = numeroFaces
+        }
     }
 }

@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Configuracao(val numeroDados: Int = 1, val numberoFaces: Int = 6) : Parcelable
+data class Configuracao(var numeroDados: Int = 1, var numberoFaces: Int = 6) : Parcelable

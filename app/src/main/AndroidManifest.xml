@@ -3,6 +3,7 @@
     package="com.ifsp.pdm.emanoela.dados">
 
     <application
+        android:name =".SharedPreferencesConstantes"
         android:allowBackup="true"
         android:icon="@mipmap/ic_dices"
         android:label="@string/app_name"
